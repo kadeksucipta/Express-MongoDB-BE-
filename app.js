@@ -6,8 +6,10 @@ const productrouter = require("./app/products/routes")
 const productrouterV2 = require("./app/products_v2/routes")
 const { json } = require("express")
 const logger = require("morgan")
+const cors = require("cors")
 
 
+app.use(cors())
 app.use(logger("dev"))
 app.use(express.urlencoded({extends: true}))
 app.use(json())
