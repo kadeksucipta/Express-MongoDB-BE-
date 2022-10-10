@@ -7,6 +7,7 @@ const productrouterV2 = require("./app/products_v2/routes")
 const { json } = require("express")
 const logger = require("morgan")
 const cors = require("cors")
+require("dotenv").config();
 
 
 app.use(cors())
@@ -24,4 +25,4 @@ app.use((req, res, next) => {
     })
 })
 
-app.listen(3000, () => console.log("Server: http://localhost:3000")) //untuk running
+app.listen(process.env.PORT || 3000, () => console.log("Server: http://localhost:3000")) //untuk running
