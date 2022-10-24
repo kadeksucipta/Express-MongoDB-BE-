@@ -1,9 +1,12 @@
 //membuat routing dengan express js
+require("./config/mongoose");
 const express = require("express")
 const path = require("path")
 const app = express() //untuk inisialisasi
-const productrouter = require("./app/products/routes")
-const productrouterV2 = require("./app/products_v2/routes")
+// const productrouter = require("./app/products/routes")
+// const productrouterV2 = require("./app/products_v2/routes")
+const productsrouterV3 = require("./app/products_v3/routes")
+const productsrouterV4 = require("./app/products_v4/routes")
 const { json } = require("express")
 const logger = require("morgan")
 const cors = require("cors")
@@ -15,8 +18,10 @@ app.use(logger("dev"))
 app.use(express.urlencoded({extends: true}))
 app.use(json())
 app.use("/public", express.static(path.join(__dirname, "uploads")))
-app.use("/api/v1", productrouter) 
-app.use("/api/v2", productrouterV2) 
+// app.use("/api/v1", productrouter) 
+// app.use("/api/v2", productrouterV2) 
+app.use("/api/v3", productsrouterV3)
+app.use("/api/v4", productsrouterV4)
 app.use((req, res, next) => {
     res.status(404) //middleware sederhana
     res.send({
