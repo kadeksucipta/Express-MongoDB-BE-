@@ -12,6 +12,13 @@ const getproducts = async (req, res) => {
         .then(result => res.send(result))
         .catch(error => res.send(error))
 }
+
+// const search = async (req, res) => {
+//     productsSchema.findOne({name: req.params})
+//         .then(result => res.send(result))
+//         .catch(error => res.send(error))
+// }
+
 const getproductsview = async (req, res) => {
     const {id} = req.params;
     productsSchema.findById({_id: ObjectId(id)})
@@ -30,7 +37,11 @@ const createproducts = async (req, res) => {
         productsSchema.create({name, price, stock, status, image_url: `http://localhost:3000/public/${image.originalname}`})
             .then(result => res.send(result))
             .catch(error => res.send(error))
-    };
+    }else {
+        productsSchema.create({name, price, stock, status})
+        .then(result => res.send(result))
+        .catch(error => res.send(error))
+    }
 };
 
 //-------------------------------------------------------------------------
@@ -45,7 +56,11 @@ const updateproducts = async (req, res) => {
         productsSchema.findByIdAndUpdate({_id: ObjectId(id)}, { $set: {name, price, stock, status, image_url: `http://localhost:3000/public/${image.originalname}`}})
             .then(result => res.send(result))
             .catch(error => res.send(error))
-    };
+    }else {
+        productsSchema.findByIdAndUpdate({_id: ObjectId(id)}, { $set: {name, price, stock, status}})
+        .then(result => res.send(result))
+        .catch(error => res.send(error))
+    }
 };
 
 //-------------------------------------------------------------------------
