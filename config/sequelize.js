@@ -2,7 +2,7 @@ const {Sequelize} = require("sequelize");
 
 const sequelize = new Sequelize({
     database: "kadeksql-cruds-v2",
-    host: "localhost",
+    host: "phpmyadmin.test",
     username: "kadeksql",
     password: "kadeksql",
     dialect: "mysql"

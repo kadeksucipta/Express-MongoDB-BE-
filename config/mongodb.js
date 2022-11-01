@@ -1,6 +1,7 @@
 const {MongoClient} = require("mongodb");
 
-const url = "mongodb://kadek:kadek@localhost:27017?authSource=admin"
+const url = "mongodb+srv://kadek:kadekatlas@express-cluster-crud.iezz7nm.mongodb.net"
+
 const client = new MongoClient(url);
 
 
@@ -14,6 +15,6 @@ const client = new MongoClient(url);
     
 })();
 
-const db = client.db("mongo-kadek");
+const db = client.db("Express-Crud");
 
 module.exports = db;
