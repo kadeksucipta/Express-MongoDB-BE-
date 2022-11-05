@@ -1,10 +1,10 @@
 const mysql = require("mysql")
 
 const connection = mysql.createConnection({
-    host: "db4free.net",
-    user: "kadekmysqlfree",
-    password: "kadekmysqlfree",
-    database: "kadekexpresssql"
+    host: "remotemysql.com",
+    user: "FMLPeYwaA3",
+    password: "KXk91Es6Rr",
+    database: "FMLPeYwaA3"
 })
 
 module.exports = connection;

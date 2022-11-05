@@ -1,4 +1,4 @@
-//membuat routing dengan express js
+// membuat routing dengan express js
 require("./config/mongoose");
 const express = require("express")
 const path = require("path")
