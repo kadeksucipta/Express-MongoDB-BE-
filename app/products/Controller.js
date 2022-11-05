@@ -35,20 +35,21 @@ const destroy = (req, res) => {
 }
 //---------------------------------------------------------------
 const store = (req, res) => {
-    console.log(store)
     const {user_id, name, price, stock, status} = req.body
     const image = req.file
+    const createdAt = new Date()
+    const updatedAt = new Date()
     if(image) {
         const target = path.join(__dirname, "../../uploads", image.originalname)
         fs.renameSync(image.path, target) 
         connection.query({
-            sql: "INSERT INTO products (user_id, name, price, stock, status, image_url) VALUES (?, ?, ? ,? , ?, ?)",
-            values: [parseInt(user_id), name, price, stock,status, `http://localhost:3000/public/${image.originalname}`]
+            sql: "INSERT INTO products (user_id, name, price, stock, status, createdAt, updatedAt, image_url) VALUES (?, ?, ? ,? , ?, ?, ?, ?)",
+            values: [parseInt(user_id), name, price, stock, status, createdAt, updatedAt, `http://localhost:3000/public/${image.originalname}`]
         }, _response(res))
-    }else  {
+    }else {
         connection.query({
-            sql: "INSERT INTO products (user_id, name, price, stock, status, image_url) VALUES (?, ?, ? ,? , ?, ?)",
-            values: [parseInt(user_id), name, price, stock,status, `http://localhost:3000/public/${image.originalname}`]
+            sql: "INSERT INTO products (user_id, name, price, status, stock, createdAt, updatedAt, image_url) VALUES (?, ?, ? ,? , ?, ?, ?, ?)",
+            values: [parseInt(user_id), name, price, status, stock, createdAt, updatedAt, `http://localhost:3000/public/${image.originalname}`]
         }, _response(res))
     }
 }
